@@ -3,13 +3,15 @@
     <head>
         <title>Warframe Worldstate Visualization</title>
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     </head>
     <body>
         <div id="app">
             <button v-on:click="selectPlatform('pc')">PC</button>
-            <button v-on:click="selectPlatform('xbox')">XBox</button>
+            <button v-on:click="selectPlatform('xb1')">XBox</button>
             <button v-on:click="selectPlatform('ps4')">PS4</button>
-            <button v-on:click="selectPlatform('switch')">Switch</button>
+            <button v-on:click="selectPlatform('swi')">Switch</button>
+            {{ world_state }}
         </div>
         <script src="script.js"></script>
     </body>
