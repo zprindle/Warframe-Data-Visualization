@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="UTF-8">
         <title>Warframe Worldstate Visualization</title>
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
@@ -11,7 +12,7 @@
             <button v-on:click="selectPlatform('xb1')">XBox</button>
             <button v-on:click="selectPlatform('ps4')">PS4</button>
             <button v-on:click="selectPlatform('swi')">Switch</button>
-            {{ world_state }}
+            {{ world_data }}
         </div>
         <script src="script.js"></script>
     </body>
