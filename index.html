@@ -8,11 +8,15 @@
     </head>
     <body>
         <div id="app">
-            <button v-on:click="selectPlatform('pc')">PC</button>
-            <button v-on:click="selectPlatform('xb1')">XBox</button>
-            <button v-on:click="selectPlatform('ps4')">PS4</button>
-            <button v-on:click="selectPlatform('swi')">Switch</button>
-            {{ world_data }}
+            <div id="platform-buttonset" v-if="state === 0">
+                <button v-on:click="selectPlatform('pc')">PC</button>
+                <button v-on:click="selectPlatform('xb1')">XBox</button>
+                <button v-on:click="selectPlatform('ps4')">PS4</button>
+                <button v-on:click="selectPlatform('swi')">Switch</button>
+            </div>
+            <div id="world-state-block" v-else>
+                {{ world_data }}
+            </div>
         </div>
         <script src="script.js"></script>
     </body>
