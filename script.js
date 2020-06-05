@@ -15,11 +15,8 @@ var app = new Vue({
             let query = "https://api.warframestat.us/" + this.platform;
             axios
             .get(query)
-            .then(response => (this.world_data = response))
+            .then(response => (this.world_data = response.data))
             .catch(error => console.log(error))
-        },
-        processResponse: function(response) {
-            
         }
     }
   })
