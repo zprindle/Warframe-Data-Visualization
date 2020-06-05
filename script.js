@@ -9,7 +9,7 @@ var app = new Vue({
         selectPlatform: function (event) {
             this.platform = event;
             this.getWorldState();
-            this.state += 1;
+            this.state = 1;
         },
         getWorldState: function() {
             let query = "https://api.warframestat.us/" + this.platform;
@@ -19,7 +19,7 @@ var app = new Vue({
             .catch(error => console.log(error))
         },
         processResponse: function(response) {
-
+            
         }
     }
   })
