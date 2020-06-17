@@ -20,3 +20,8 @@ var app = new Vue({
         }
     }
   })
+
+  Vue.component('fissure-widget', {
+      props: ['fissure_data'],
+      template: '<div>{{ fissure_data }}</div>'
+  })

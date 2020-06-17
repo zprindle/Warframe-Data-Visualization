@@ -38,7 +38,13 @@
                     <div class="tab-pane fade" id="nav-alerts" role="tabpanel" aria-labelledby="nav-alerts-tab"> {{ world_data.alerts }} </div>
                     <div class="tab-pane fade" id="nav-sorties" role="tabpanel" aria-labelledby="nav-sorties-tab"> {{ world_data.sortie }} </div>
                     <div class="tab-pane fade" id="nav-synd-missions" role="tabpanel" aria-labelledby="nav-synd-missions-tab"> {{ world_data.syndicateMissions }} </div>
-                    <div class="tab-pane fade" id="nav-fissures" role="tabpanel" aria-labelledby="nav-fissuress-tab"> {{ world_data.fissures }} </div>
+                    <div class="tab-pane fade" id="nav-fissures" role="tabpanel" aria-labelledby="nav-fissuress-tab">
+                        <fissure-widget
+                            v-for='fissure in world_data.fissures'
+                            v-bind:key = fissure.id
+                            v-bind:fissure_data = fissure
+                        ></fissure-widget>
+                    </div>
                     <div class="tab-pane fade" id="nav-invasions" role="tabpanel" aria-labelledby="nav-invasions-tab"> {{ world_data.invasions }} </div>
                 </div>
             </div>
