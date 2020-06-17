@@ -33,19 +33,55 @@
                     </div>
                 </nav>
                 <div class="tab-content">
-                    <div class="tab-pane fade active" id="nav-news" role="tabpanel" aria-labelledby="nav-news-tab"> {{ world_data.news }} </div>
-                    <div class="tab-pane fade" id="nav-events" role="tabpanel" aria-labelledby="nav-events-tab"> {{ world_data.events }} </div>
-                    <div class="tab-pane fade" id="nav-alerts" role="tabpanel" aria-labelledby="nav-alerts-tab"> {{ world_data.alerts }} </div>
-                    <div class="tab-pane fade" id="nav-sorties" role="tabpanel" aria-labelledby="nav-sorties-tab"> {{ world_data.sortie }} </div>
-                    <div class="tab-pane fade" id="nav-synd-missions" role="tabpanel" aria-labelledby="nav-synd-missions-tab"> {{ world_data.syndicateMissions }} </div>
+                    <div class="tab-pane fade active" id="nav-news" role="tabpanel" aria-labelledby="nav-news-tab">
+                        <world-event-widget
+                            v-for='news in world_data.news'
+                            v-bind:key = news.id
+                            v-bind:event_data = news
+                        ></world-event-widget>
+                    </div>
+                    <div class="tab-pane fade" id="nav-events" role="tabpanel" aria-labelledby="nav-events-tab">
+                        <world-event-widget
+                            v-for='event in world_data.events'
+                            v-bind:key = events.id
+                            v-bind:event_data = event
+                        ></world-event-widget>
+                    </div>
+                    <div class="tab-pane fade" id="nav-alerts" role="tabpanel" aria-labelledby="nav-alerts-tab">
+                        <world-event-widget
+                            v-for='alert in world_data.alerts'
+                            v-bind:key = alert.id
+                            v-bind:event_data = alert
+                        ></world-event-widget>
+                    </div>
+                    <div class="tab-pane fade" id="nav-sorties" role="tabpanel" aria-labelledby="nav-sorties-tab">
+                        <world-event-widget
+                            v-for='sortie in world_data.sorties'
+                            v-bind:key = sortie.id
+                            v-bind:event_data = sortie
+                        ></world-event-widget>
+                    </div>
+                    <div class="tab-pane fade" id="nav-synd-missions" role="tabpanel" aria-labelledby="nav-synd-missions-tab">
+                        <world-event-widget
+                            v-for='syndicate_mission in world_data.syndicateMissions'
+                            v-bind:key = syndicate_mission.id
+                            v-bind:event_data = syndicate_mission
+                        ></world-event-widget>
+                    </div>
                     <div class="tab-pane fade" id="nav-fissures" role="tabpanel" aria-labelledby="nav-fissuress-tab">
-                        <fissure-widget
+                        <world-event-widget
                             v-for='fissure in world_data.fissures'
                             v-bind:key = fissure.id
-                            v-bind:fissure_data = fissure
-                        ></fissure-widget>
+                            v-bind:event_data = fissure
+                        ></world-event-widget>
                     </div>
-                    <div class="tab-pane fade" id="nav-invasions" role="tabpanel" aria-labelledby="nav-invasions-tab"> {{ world_data.invasions }} </div>
+                    <div class="tab-pane fade" id="nav-invasions" role="tabpanel" aria-labelledby="nav-invasions-tab">
+                        <world-event-widget
+                            v-for='invasion in world_data.invasions'
+                            v-bind:key = invasion.id
+                            v-bind:event_data = invasion
+                        ></world-event-widget>
+                    </div>
                 </div>
             </div>
         </div>

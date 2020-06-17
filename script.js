@@ -21,7 +21,7 @@ var app = new Vue({
     }
   })
 
-  Vue.component('fissure-widget', {
-      props: ['fissure_data'],
-      template: '<div>{{ fissure_data }}</div>'
-  })
+Vue.component('world-event-widget', {
+    props: ['event_data'],
+    template: '<div>{{ event_data }}</div>'
+})
