@@ -29,6 +29,10 @@ var app = new Vue({
   })
 
 Vue.component('event-instance', {
-    props: ['instance_data'],
-    template: '<div>{{ instance_data }}</div>'
+    props: ['event_type', 'instance_data'],
+    template: `
+        <div>
+            {{ instance_data }}
+        </div>
+    `
 })

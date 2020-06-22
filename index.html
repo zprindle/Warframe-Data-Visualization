@@ -23,15 +23,14 @@
       <div id="world-info" v-else>
         <h1> {{ timestamp }} </h1>
         <div v-for="(event_type, name) in world_data">
-          <div>
-            <button v-on:click="curr_view=name">{{ name }}</button>
-            <event-instance
-              v-if="name === curr_view"
-              v-for="instance in event_type"
-              v-bind:key="instance.id"
-              v-bind:instance_data="instance"
-            ></event-instance>
-          </div>
+          <button v-on:click="curr_view=name">{{ name }}</button>
+          <event-instance
+            v-if="name === curr_view"
+            v-for="instance in event_type"
+            v-bind:key="instance.id"
+            v-bind:event_type="name"
+            v-bind:instance_data="instance"
+          ></event-instance>
         </div>
       </div>
     </div>
