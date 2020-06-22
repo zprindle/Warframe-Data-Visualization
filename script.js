@@ -21,7 +21,7 @@ var app = new Vue({
     }
   })
 
-Vue.component('world-event-widget', {
-    props: ['event_data'],
-    template: '<div>{{ event_data }}</div>'
+Vue.component('event-instance', {
+    props: ['instance_data'],
+    template: '<div>{{ instance_data }}</div>'
 })

@@ -1,90 +1,37 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>Warframe Worldstate Visualization</title>
-        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-        <!-- Bootstrap -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-        <!-- Optional theme -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-        <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    </head>
-    <body>
-        <div id="app">
-            <div id="platform-buttonset" v-if="state === 0">
-                <button v-on:click="selectPlatform('pc')">PC</button>
-                <button v-on:click="selectPlatform('xb1')">XBox</button>
-                <button v-on:click="selectPlatform('ps4')">PS4</button>
-                <button v-on:click="selectPlatform('swi')">Switch</button>
-            </div>
-            <div id="worldata" v-else>
-                <nav>
-                    <div class="nav nav-tabs">
-                        <a class="nav-item nav-link active" id="nav-news-tab" data-toggle="tab" href="#nav-news" role="tab" aria-controls="nav-news" aria-selected="true">News</a>
-                        <a class="nav-item nav-link" id="nav-events-tab" data-toggle="tab" href="#nav-events" role="tab" aria-controls="nav-events" aria-selected="false">Events</a>
-                        <a class="nav-item nav-link" id="nav-alerts-tab" data-toggle="tab" href="#nav-alerts" role="tab" aria-controls="nav-alerts" aria-selected="false">Alerts</a>
-                        <a class="nav-item nav-link" id="nav-sorties-tab" data-toggle="tab" href="#nav-sorties" role="tab" aria-controls="nav-sorties" aria-selected="false">Sorties</a>
-                        <a class="nav-item nav-link" id="nav-synd-missions-tab" data-toggle="tab" href="#nav-synd-missions" role="tab" aria-controls="nav-synd-missions" aria-selected="false">Syndicate Missions</a>
-                        <a class="nav-item nav-link" id="nav-fissures-tab" data-toggle="tab" href="#nav-fissures" role="tab" aria-controls="nav-fissures" aria-selected="false">Fissures</a>
-                        <a class="nav-item nav-link" id="nav-invasions-tab" data-toggle="tab" href="#nav-invasions" role="tab" aria-controls="nav-invasions" aria-selected="false">Invasions</a>
-                    </div>
-                </nav>
-                <div class="tab-content">
-                    <div class="tab-pane fade active" id="nav-news" role="tabpanel" aria-labelledby="nav-news-tab">
-                        <world-event-widget
-                            v-for='news in world_data.news'
-                            v-bind:key = news.id
-                            v-bind:event_data = news
-                        ></world-event-widget>
-                    </div>
-                    <div class="tab-pane fade" id="nav-events" role="tabpanel" aria-labelledby="nav-events-tab">
-                        <world-event-widget
-                            v-for='event in world_data.events'
-                            v-bind:key = events.id
-                            v-bind:event_data = event
-                        ></world-event-widget>
-                    </div>
-                    <div class="tab-pane fade" id="nav-alerts" role="tabpanel" aria-labelledby="nav-alerts-tab">
-                        <world-event-widget
-                            v-for='alert in world_data.alerts'
-                            v-bind:key = alert.id
-                            v-bind:event_data = alert
-                        ></world-event-widget>
-                    </div>
-                    <div class="tab-pane fade" id="nav-sorties" role="tabpanel" aria-labelledby="nav-sorties-tab">
-                        <world-event-widget
-                            v-for='sortie in world_data.sorties'
-                            v-bind:key = sortie.id
-                            v-bind:event_data = sortie
-                        ></world-event-widget>
-                    </div>
-                    <div class="tab-pane fade" id="nav-synd-missions" role="tabpanel" aria-labelledby="nav-synd-missions-tab">
-                        <world-event-widget
-                            v-for='syndicate_mission in world_data.syndicateMissions'
-                            v-bind:key = syndicate_mission.id
-                            v-bind:event_data = syndicate_mission
-                        ></world-event-widget>
-                    </div>
-                    <div class="tab-pane fade" id="nav-fissures" role="tabpanel" aria-labelledby="nav-fissuress-tab">
-                        <world-event-widget
-                            v-for='fissure in world_data.fissures'
-                            v-bind:key = fissure.id
-                            v-bind:event_data = fissure
-                        ></world-event-widget>
-                    </div>
-                    <div class="tab-pane fade" id="nav-invasions" role="tabpanel" aria-labelledby="nav-invasions-tab">
-                        <world-event-widget
-                            v-for='invasion in world_data.invasions'
-                            v-bind:key = invasion.id
-                            v-bind:event_data = invasion
-                        ></world-event-widget>
-                    </div>
-                </div>
-            </div>
+  <head>
+    <meta charset="UTF-8">
+      <title>Warframe Worldstate Visualization</title>
+      <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+      <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+      <!-- Bootstrap -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+      <!-- Optional theme -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+      <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div id="app">
+      <div id="platform-buttonset" v-if="state === 0">
+        <button v-on:click="selectPlatform('pc')">PC</button>
+        <button v-on:click="selectPlatform('xb1')">XBox</button>
+        <button v-on:click="selectPlatform('ps4')">PS4</button>
+        <button v-on:click="selectPlatform('swi')">Switch</button>
+      </div>
+      <div id="world-info" v-else>
+        <div v-for="event_type in world_data">
+          <div>
+            <event-instance
+              v-for="instance in event_type"
+              v-bind:key="instance.id"
+              v-bind:instance_data="instance"
+            ></event-instance>
+          </div>
         </div>
-        <script src="script.js"></script>
-    </body>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
 </html> 
