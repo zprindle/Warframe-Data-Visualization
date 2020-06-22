@@ -21,9 +21,12 @@
         <button v-on:click="selectPlatform('swi')">Switch</button>
       </div>
       <div id="world-info" v-else>
-        <div v-for="event_type in world_data">
+        <h1> {{ timestamp }} </h1>
+        <div v-for="(event_type, name) in world_data">
           <div>
+            <button v-on:click="curr_view=name">{{ name }}</button>
             <event-instance
+              v-if="name === curr_view"
               v-for="instance in event_type"
               v-bind:key="instance.id"
               v-bind:instance_data="instance"
